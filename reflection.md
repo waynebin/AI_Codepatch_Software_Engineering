@@ -9,6 +9,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
   (for example: "the secret number kept changing" or "the hints were backwards").
 
 ---
+I created a simple number guessing game using Streamlit. When I first ran the game, I noticed that the secret number kept changing every time I made a guess. This made it impossible to win the game because the target number was not consistent. Additionally, the hints provided were incorrect; for example, when I guessed a number that was too low, the game would sometimes say it was too high, which added to the confusion and frustration of trying to play.
 
 ## 2. How did you use AI as a teammate?
 
@@ -17,6 +18,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
 ---
+I used ChatGPT as my AI teammate for this project. One correct suggestion from ChatGPT was to use Streamlit's session state to store the secret number, which would prevent it from changing on every rerun. I implemented this suggestion and verified that the secret number remained consistent across guesses, allowing me to successfully play the game.
 
 ## 3. Debugging and testing your fixes
 
@@ -26,6 +28,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - Did AI help you design or understand any tests? How?
 
 ---
+To determine whether a bug was really fixed, I ran the game multiple times and made several guesses to see if the secret number remained consistent. For example, after implementing the session state fix, I guessed a number and then immediately guessed again to check if the secret number had changed. This manual testing showed that the secret number was now stable, confirming that the bug was fixed. AI helped me understand how to use Streamlit's session state effectively, which was crucial for designing the test to ensure the secret number did not change on reruns.
 
 ## 4. What did you learn about Streamlit and state?
 
@@ -34,6 +37,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - What change did you make that finally gave the game a stable secret number?
 
 ---
+The secret number kept changing in the original app because Streamlit reruns the entire script every time a user interacts with the app (like making a guess). This means that any variable defined in the script, including the secret number, would be reinitialized on each interaction, leading to a new random number being generated every time. To explain Streamlit reruns and session state to a friend, I would say that Streamlit reruns the whole app whenever you interact with it, which can cause variables to reset. Session state is a way to store information across these reruns, allowing you to keep certain values (like the secret number) consistent throughout the user's interaction with the app. The change I made to give the game a stable secret number was to use Streamlit's session state to store the secret number, ensuring that it remained the same across all interactions until the user decides to reset it.
 
 ## 5. Looking ahead: your developer habits
 
@@ -41,3 +45,5 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+One habit I want to reuse in future projects is the practice of manually testing my code after implementing a fix, especially when working with AI-generated suggestions. This helps me ensure that the changes I made actually resolve the issue and that the game functions as intended. Next time I work with AI on a coding task, I would be more cautious about accepting suggestions without thoroughly understanding them first, as some AI suggestions can be incorrect or misleading. This project has made me realize that while AI can be a powerful tool for generating code and providing solutions, it's crucial to critically evaluate and test those suggestions rather than relying on them blindly.

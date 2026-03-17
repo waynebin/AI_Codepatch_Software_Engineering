@@ -1,0 +1,5 @@
+1.When submitting guess the system does not keep track of whether the guess is between the given range.
+2."Game over. Start a new game to try again." doesn't go away eventhough you started a new game
+3.New game doesn't reset the game
+4.Show hint does not give you a hint
+5.
