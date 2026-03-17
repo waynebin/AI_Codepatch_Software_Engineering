@@ -9,7 +9,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
   (for example: "the secret number kept changing" or "the hints were backwards").
 
 ---
-I created a simple number guessing game using Streamlit. When I first ran the game, I noticed that the secret number kept changing every time I made a guess. This made it impossible to win the game because the target number was not consistent. Additionally, the hints provided were incorrect; for example, when I guessed a number that was too low, the game would sometimes say it was too high, which added to the confusion and frustration of trying to play.
+ When I first ran the game, it displayed a simple interface where I could input my guesses. However, I quickly noticed that the secret number kept changing every time I made a guess, which made it impossible to win the game. Additionally, the hints provided were not accurate; for example, if I guessed a number that was too low, the game would sometimes indicate that it was too high instead. These bugs made the game frustrating to play and highlighted the need for a stable secret number and correct hint logic.
 
 ## 2. How did you use AI as a teammate?
 

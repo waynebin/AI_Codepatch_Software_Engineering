@@ -1,5 +1,6 @@
 import random
 import streamlit as st
+from logic_utils import check_guess
 
 def get_range_for_difficulty(difficulty: str):
     if difficulty == "Easy":
@@ -29,22 +30,7 @@ def parse_guess(raw: str):
     return True, value, None
 
 
-def check_guess(guess, secret):
-    if guess == secret:
-        return "Win", "🎉 Correct!"
 
-    try:
-        if guess > secret:
-            return "Too High", "📈 Go HIGHER!"
-        else:
-            return "Too Low", "📉 Go LOWER!"
-    except TypeError:
-        g = str(guess)
-        if g == secret:
-            return "Win", "🎉 Correct!"
-        if g > secret:
-            return "Too High", "📈 Go HIGHER!"
-        return "Too Low", "📉 Go LOWER!"
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
@@ -84,14 +70,16 @@ attempt_limit_map = {
 }
 attempt_limit = attempt_limit_map[difficulty]
 
+#FixMe:Change to get the st.session_state.difficulty
 low, high = get_range_for_difficulty(difficulty)
 
 st.sidebar.caption(f"Range: {low} to {high}")
 st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
 
+
 if "secret" not in st.session_state:
     st.session_state.secret = random.randint(low, high)
-
+#FixMe: Logic breaks here attempt counter starts wrong should be zero.
 if "attempts" not in st.session_state:
     st.session_state.attempts = 1
 
@@ -103,7 +91,8 @@ if "status" not in st.session_state:
 
 if "history" not in st.session_state:
     st.session_state.history = []
-
+#FixMe: the hardcoded range this should be 
+# a formatted range {low} and {high}
 st.subheader("Make a guess")
 
 st.info(
@@ -155,12 +144,7 @@ if submit:
     else:
         st.session_state.history.append(guess_int)
 
-        if st.session_state.attempts % 2 == 0:
-            secret = str(st.session_state.secret)
-        else:
-            secret = st.session_state.secret
-
-        outcome, message = check_guess(guess_int, secret)
+        outcome, message = check_guess(guess_int, st.session_state.secret)
 
         if show_hint:
             st.warning(message)
